@@ -3,35 +3,43 @@ const placeShipsButton = document.getElementById("placeShips");
 
 let shipPositions = [];
 let hit = 0;
+startgame();
+function hitCell(event) {
+  let clicked = event.target;
+  let check = JSON.parse(clicked.getAttribute("data-isShip"));
+  console.log(typeof check);
+  console.log(check);
 
-function startgame(){
-  shipPositions = [];
-  hit = 0 ;
-}
-//hello
-
-for (let i = 0; i < 25; i++) {
-  const cell = document.createElement("div");
-  cell.classList.add("cell");
-  cell.setAttribute("data-index", i);
-  cell.setAttribute("data-isship",((i == 3 ||i == 5 ||i == 10) ? true : false));
-  board.appendChild(cell);
-}
-let isShipArray = []; 
-function randomShipPlaces(a,b) {
-  while (3 > isShipArray.length){
-    var randomNumber = Math.floor(Math.random() * 25)
-    if(!isShipArray.includes(randomNumber)){
-      isShipArray.push(randomNumber) 
-      }
+  if (check === true) {
+    clicked.classList.add("shipSink");
+  } else {
+    clicked.classList.add("noShipSink");
   }
-  return(isShipArray);
 }
-randomShipPlaces(0,25);
-console.log(isShipArray);
+function startgame() {
+  board.innerHTML = "";
+  shipPositions = [];
+  hit = 0;
+  let isShipArray = randomShipPlaces();
 
+  for (let i = 0; i < 25; i++) {
+    const cell = document.createElement("div");
+    cell.classList.add("cell");
+    cell.setAttribute("data-index", i);
+    cell.setAttribute("data-isShip", isShipArray.includes(i) ? true : false);
+    board.appendChild(cell);
+    cell.addEventListener("click", hitCell);
+  }
+}
+placeShipsButton.addEventListener("click", startgame);
 
-
-
-
-
+function randomShipPlaces() {
+  let isShipArray = [];
+  while (3 > isShipArray.length) {
+    var randomNumber = Math.floor(Math.random() * 25);
+    if (!isShipArray.includes(randomNumber)) {
+      isShipArray.push(randomNumber);
+    }
+  }
+  return isShipArray;
+}
