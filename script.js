@@ -8,6 +8,7 @@ function startgame(){
   shipPositions = [];
   hit = 0 ;
 }
+//hello
 
 for (let i = 0; i < 25; i++) {
   const cell = document.createElement("div");
