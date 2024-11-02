@@ -1,25 +1,35 @@
+"use strict"
 const board = document.getElementById("board");
 const placeShipsButton = document.getElementById("placeShips");
 
 let shipPositions = [];
-let hit = 0;
+let hit;
+
 startgame();
+
 function hitCell(event) {
   let clicked = event.target;
   let check = JSON.parse(clicked.getAttribute("data-isShip"));
-  console.log(typeof check);
-  console.log(check);
-
+  console.log(hit);
+  hit--;
+  
   if (check === true) {
     clicked.classList.add("shipSink");
   } else {
     clicked.classList.add("noShipSink");
   }
+  if(hit == 0) {
+    setTimeout(function(){
+    alert('game over!');
+    startgame();
+    },10);
+  }
 }
+
 function startgame() {
+  hit = 3;
   board.innerHTML = "";
   shipPositions = [];
-  hit = 0;
   let isShipArray = randomShipPlaces();
 
   for (let i = 0; i < 25; i++) {
@@ -31,6 +41,7 @@ function startgame() {
     cell.addEventListener("click", hitCell);
   }
 }
+
 placeShipsButton.addEventListener("click", startgame);
 
 function randomShipPlaces() {
