@@ -4,52 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple Ship Sink Game</title>
-    <style>
-      body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-      }
-
-      .board {
-        display: grid;
-        grid-template-columns: repeat(5, 50px);
-        grid-template-rows: repeat(5, 50px);
-        gap: 5px;
-        margin-bottom: 20px;
-      }
-
-      .cell {
-        width: 50px;
-        height: 50px;
-        background-color: lightblue;
-        border: 1px solid #333;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .shipSink {
-        background: red;
-        border-radius: 50%;
-      }
-      .noShipSink {
-        background: yellow;
-        border-radius: 50%;
-      }
-      button {
-        padding: 10px 20px;
-        font-size: 16px;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Ship Sink Game</h1>
-    <div class="board" id="board"></div>
+    <!-- <h1>Ship Sink Game</h1> -->
+    <div class="board-container">
+      <div class="circle circle1"></div>
+      <div class="circle circle2"></div>
+      <div class="circle circle3"></div>
+      <div class="circle circle4"></div>
+      <div class="board" id="board" disabled></div>
+    </div>
+
     <button id="placeShips">Place 3 Random Ships</button>
+    <p id="demo"></p>
+    <p><span id="minuet">0</span> : <span id="second">00</span></p>
 
     <script src="script.js"></script>
   </body>

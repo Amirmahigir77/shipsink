@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+  .board-container{
+    position: relative;
+  }
+  .circle{
+    border:5px solid #11541b;
+    border-radius: 50%;
+    position: absolute;
+  }
+  .circle1{ 
+    top: 35%;
+    left: 37%;
+    width: 100px;
+    height: 100px;
+    }
+    .circle2{
+    top: 24%;
+    left: 25%;
+    width: 200px;
+    height: 200px;
+    }
+    .circle3{
+    top: 8%;
+    left: 8%;
+    width: 350px;
+    height: 350px;
+    }
+    .circle4{
+    top: -15%;
+    left: -13%;
+    width: 500px;
+    height: 500px;
+    }
+  .board {
+    display: grid;
+    grid-template-columns: repeat(5, 80px);
+    grid-template-rows: repeat(5, 80px);
+    /* gap: 5px; */
+    margin-bottom: 20px;
+  }
+
+  .cell {
+    width: 80px;
+    height: 80px;
+    opacity: 0.5;
+    background-color: rgb(17, 84, 27);
+    border: 1px solid #55f653;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cell:hover {
+    cursor: pointer;
+  }
+  .shipSink {
+    background-image: url('./Untitled\ design.png');
+  }
+  /* .noShipSink {
+  } */
+  .noShipSink::before{
+    content: 'MISS';
+    color: #55f653;
+    font-weight: bold;
+  }
+  .disabled {
+    pointer-events: none;
+    cursor: alias;
+  }
+button {
+  background-color: #11541b;
+  border: 1px solid rgba(27, 31, 35, .15);
+  color: #fff;
+  cursor: pointer;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 16px;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+button:focus:not(:focus-visible):not(.focus-visible) {
+  box-shadow: none;
+  outline: none;
+}
+
+button:hover {
+  background-color: #2c974b;
+}
+
+button:focus {
+  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+  outline: none;
+}
+
+button:active {
+  background-color: #298e46;
+}
